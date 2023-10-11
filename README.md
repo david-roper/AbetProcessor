@@ -1,2 +1,2 @@
 # AbetProcessor
-Repo exerimenting with converting Abetdb files into other forms of data
+Repo experimenting with converting Abetdb files into other forms of data
