@@ -15,6 +15,25 @@ DBsFound = []
 for i in os.listdir(os.curdir):                             #find file names
     if i.__contains__(".ABETdb"):
         fileName.append(i)
+#remove folders already full with old data
+for i in fileName:
+    folder = i[:-7]
+    if (os.path.exists(workingDir + '/' + folder)):
+        shutil.rmtree(folder)
+
+
+#remove old csv to produce new ones
+
+deleteFiles = ['tbl_Data.csv', 'tbl_Schedules.csv','tbl_Schedule_Notes.csv','tbl_Version.csv']
+
+for j in deleteFiles:
+    if (os.path.exists(j)):
+        os.remove(j)
+# os.remove('tbl_Data.csv')
+# os.remove('tbl_Schedules.csv')
+# os.remove('tbl_Schedule_Notes.csv')
+# os.remove('tbl_Version.csv')
+
 for i in fileName:                                          #convert each found file to csv files and place them in folder
     Pcommand = "bash mdb-export-all.sh " + i
     p = subprocess.Popen(Pcommand, stdout = subprocess.PIPE, close_fds = True, shell = True)
